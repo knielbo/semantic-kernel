@@ -1,5 +1,5 @@
 """
-Embedding pipeline for Grundtvig Centeret
+v2 of train_embedding
 """
 import argparse
 import os
@@ -39,7 +39,7 @@ class SentIter(object):
         self.dirname = dirname
 
     def __iter__(self):
-        for fname in sorted(os.listdir(self.dirname)[:3]):
+        for fname in sorted(os.listdir(self.dirname)):
             with open(os.path.join(self.dirname, fname), "r") as f:
                 text = f.read()
             sentences = list()
