@@ -1,0 +1,12 @@
+setuptools
+wheel
+spacy
+nltk
+gensim
+python-Levenshtein
+python_louvain
+pandas
+networkx
+matplotlib
+numpy
+community
