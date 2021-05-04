@@ -8,4 +8,4 @@ sickern/
 dat/
 
 # figures
-dat/*.png
+.png
