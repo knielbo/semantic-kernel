@@ -14,7 +14,7 @@ from util import stringnorm
 from util import SentIter
 
 # tmp
-import time
+#import time
 
 
 def main():
