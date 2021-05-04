@@ -12,3 +12,6 @@ dat/
 
 # figures
 *.png
+
+# specific dev files
+coder_init.sh
