@@ -5,13 +5,6 @@
 source sickern/bin/activate
 
 
-#SEED=res/seedlist.txt
-# python src/train_vectors.py
-#python src/build_kernel.py --model mdl/vectors_expr3.pcl --seed $SEED --norm True
-#python src/build_graph.py --seed $SEED
-
-
-
 SEEDS=res/*
 for seedls in $SEEDS
 do
