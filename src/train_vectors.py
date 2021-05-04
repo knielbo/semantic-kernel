@@ -32,8 +32,8 @@ def main():
     mdl = gensim.models.Word2Vec(vector_size=50, window=5, min_count=10, workers=8)# update vector size
     mdl.build_vocab(sentences)
     mdl.train(sentences, total_examples=mdl.corpus_count, epochs=mdl.epochs)# update epochs
-    # store model
-    mdl.save("mdl/word2vec.model")# TODO: make as input path with tag
+    # TODO: store model
+    #mdl.save("mdl/word2vec.model")# TODO: make as input path with tag
 
     print(f"{bcolors.OKGREEN}[INFO] writing vectors to disc ...{bcolors.ENDC}")
     lexicon = list(mdl.wv.index_to_key)
