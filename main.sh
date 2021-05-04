@@ -19,6 +19,7 @@ if [ -d $VENVNAME ]
 then
     echo "[INFO] activate: $VENVNAME"
     source sickern/bin/activate
+    # add data downloader
 else
     echo "[INFO] build: $VENVNAME"
     bash create_venv.sh
