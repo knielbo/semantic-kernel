@@ -1,109 +1,83 @@
 # Semantic Kernel: Concept Graphs for EDA #
 
+## Getting Started
 
-sudo apt-get install graphviz graphviz-dev
-pip install pygraphviz
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+Everything will be revealed be (assuming sudo privileges):
 
 ```bash
-python -m spacy download da_core_news_sm
-
-
-```
-
-```python
-import nltk
-nltk.download('punkt')
+bash main.sh
 ```
 
 
-pip install python-Levenshtein
+### Prerequisites
+
+For running in virtual environment (recommended) and assuming python3.6+ is installed.
+
+```
+sudo pip3 install virtualenv
+virtualenv -p /usr/bin/python3.6 venv
+source venv/bin/activate
+```
+
+### Installing
+
+Clone repository and install requirements
+
+```
+git clone https://github.com/knielbo/cvca-x.git
+pip install -r requirements.txt
+```
+
+To train model
+
+```
+
+```
+
+To run model
+
+```
+
+```
 
 
+## Running the tests
 
-####################
+Explain how to run the automated tests for this system
 
-EXPERIMENT 1: vectors_expr1
-dat-error, no-lemma 128, 4 threads, window 5
-['kirke', 'menighed', 'præst']
-['aabenbaring', 'BEKIENDELSE', 'bekjendelse', 'bibelen', 'DIGTER', 'forfatter', 'GIERNING', 'gjerning', 'grundsætning', 'KIRKE', 'KIRKEN', 'MENIGHED', 'menigheden', 'person', 'PROPHET', 'PRÆST', 'skribent', 'troes']
-[INFO] saved 19465 vectors to mdl/vectors_test.pcl
-[INFO] runtime 4914.694873809814 seconds.
+### Break down into end to end tests
 
-nucle_types
-{'kirke': ['kirke', 'kirken', 'menighed', 'kirkes', 'skole'], 'menighed': ['menighed', 'gierning', 'bekiendelse', 'grundvold', 'tjeneste'], 'præst': ['præst', 'prophet', 'digter', 'person', 'mand']}
+```
+todo
+```
 
-nucle_tokens
-{'bekiendelse': ['bekiendelse', 'bekjendelse', 'troes', 'regel', 'menigheds', 'eenhed', 'uforanderlige', 'børnelærdom', 'artikel', 'skrifts'], 'digter': ['digter', 'forfatter', 'skribent', 'historiker', 'begivenhed', 'tyran', 'hjemmel', 'fortælling', 'rolle', 'idee'], 'gierning': ['gierning', 'grundsætning', 'gjerning', 'tilværelse', 'bevidsthed', 'personlighed', 'skabning', 'menighed', 'bekiendelse', 'aabenbaring'], 'kirke': ['kirke', 'kirken', 'menighed', 'kirkes', 'skole', 'stat', 'stats', 'bekiendelse', 'grundvold', 'forfatning'], 'kirken': ['kirken', 'menigheden', 'bibelen', 'staten', 'kirke', 'troen', 'skriften', 'skolen', 'christendommen', 'historien'], 'menighed': ['menighed', 'gierning', 'bekiendelse', 'grundvold', 'tjeneste', 'tilværelse', 'menigheds', 'grundsætning', 'guddom', 'personlighed'], 'prophet': ['prophet', 'person', 'aabenbaring', 'præst', 'digter', 'talsmand', 'tyran', 'pave', 'forfatter', 'fjende'], 'præst': ['præst', 'prophet', 'digter', 'person', 'mand', 'tyran', 'kristen', 'christen', 'biskop', 'catechismus']}
+### And coding style tests
 
+Explain what these tests test and why
 
-EXPERIMENT 2: vectors_expr2
-dat, no-lemma, 128, 4 threads, window 5
-['kirke', 'menighed', 'præst']
-['BISP', 'evangeliske', 'farfader', 'folkekirke', 'forfatningen', 'forkyndelse', 'FRIMENIGHED', 'johan', 'KIRKE', 'KIRKEN', 'KIRKES', 'MENIGHED', 'MENIGHEDS', 'PRÆST', 'PRÆSTEN', 'præsterne', 'statskirke']
-[INFO] saved 34091 vectors to mdl/vectors_test.pcl
-[INFO] runtime 10227.938758134842 seconds.
-
-nucle_types
-{'kirke': ['kirke', 'kirken', 'kirkes'], 'menighed': ['menighed', 'frimenighed', 'menigheds'], 'præst': ['præst', 'bisp', 'præsten']}
-
-nucle_tokens
-{'bisp': ['bisp', 'johan', 'farfader'], 'frimenighed': ['frimenighed', 'folkekirke', 'statskirke'], 'kirke': ['kirke', 'kirken', 'kirkes'], 'kirken': ['kirken', 'kirke', 'forfatningen'], 'kirkes': ['kirkes', 'evangeliske', 'menigheds'], 'menighed': ['menighed', 'frimenighed', 'menigheds'], 'menigheds': ['menigheds', 'kirkes', 'forkyndelse'], 'præst': ['præst', 'bisp', 'præsten'], 'præsten': ['præsten', 'præsterne', 'præst']}
+```
+Give an example
+```
 
 
-EXPERIMENT 3: vectors_expr3
-dat, lemma, 128, 4 threads, window 5
+## Contributing
 
-nucle_types
-{'kirke': ['kirke', 'menighed', 'folkekirke'], 'menighed': ['menighed', 'frimenighed', 'evangelium'], 'præst': ['præst', 'lærer', 'bisp']}
+1. Fork it!
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request :D
 
-nucle_tokens
-{'bisp': ['bisp', 'ærke', 'præst'], 'evangelium': ['evangelium', 'apostel', 'forkyndelse'], 'folkekirke': ['folkekirke', 'statskirke', 'religion'], 'frimenighed': ['frimenighed', 'folkekirke', 'statskirke'], 'kirke': ['kirke', 'menighed', 'folkekirke'], 'lærer': ['lærer', 'embedsmand', 'præst'], 'menighed': ['menighed', 'frimenighed', 'evangelium'], 'præst': ['præst', 'lærer', 'bisp']}
-
-[INFO] saved 24450 vectors to mdl/vectors_expr3.pcl
-[INFO] runtime 14314.589876413345 seconds.
-
-EXPERIMENT 4: vectors_expr4
-dat, lemma, 100, 4 threads, window 5
-
-nucle_types
-{'kirke': ['kirke', 'menighed', 'folkekirke'], 'menighed': ['menighed', 'frimenighed', 'evangelium'], 'præst': ['præst', 'lærer', 'bisp']}
-
-nucle_tokens
-{'bisp': ['bisp', 'ærke', 'præst'], 'evangelium': ['evangelium', 'apostel', 'forkyndelse'], 'folkekirke': ['folkekirke', 'statskirke', 'religion'], 'frimenighed': ['frimenighed', 'folkekirke', 'statskirke'], 'kirke': ['kirke', 'menighed', 'folkekirke'], 'lærer': ['lærer', 'embedsmand', 'præst'], 'menighed': ['menighed', 'frimenighed', 'evangelium'], 'præst': ['præst', 'lærer', 'bisp']}
-
-EXPERIMENT 5: vectors_expr5
-dat, lemma, 100, 4 threads, window 10, min_count=10
-
-[INFO] writing vectors to disc ...
-[INFO] saved 24450 vectors to mdl/vectors_expr5.pcl
-
-nucle_types
-
-nucle_tokens
+## Versioning
 
 
-EXPERIMENT 6: vectors_expr6
-dat, lemma, 100, 4 threads, window 3, min_count=1
+## Authors
+Kristoffer L. Nielbo  
 
-[INFO] writing vectors to disc ...
-[INFO] saved 147859 vectors to mdl/vectors_expr6.pcl
+## License
 
-nucle_types
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
-nucle_tokens
-
-
-EXPERIMENT 7: vectors_expr7 --> KEEP max cores
-dat, lemma, 100, 8 threads, window 5, min_count=10
-
-[INFO] saved 24450 vectors to mdl/vectors_expr7.pcl
-
-[INFO] runtime 9580.704177856445 seconds.
-
-nucle_types
-
-nucle_tokens
-
-EXPERIMENT 8: vectors_expr8 (run in batch mode)
-
-dat, lemma, 50, 8 threads, window 5, min_count=10
+## Acknowledgments
