@@ -8,6 +8,7 @@ sickern/
 dat/
 *.pcl
 *.dat
+*.txt
 
 # figures
 *.png
