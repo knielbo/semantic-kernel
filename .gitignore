@@ -6,3 +6,6 @@ sickern/
 
 # data
 dat/
+
+# figures
+dat/*.png
