@@ -1,11 +1,13 @@
 import os
+import argparse
 import numpy as np
-
+from datetime import date
 import matplotlib.pyplot as plt
 
 import networkx as nx
 from networkx.drawing.nx_agraph import graphviz_layout
 from community import community_louvain
+from util import bcolors
 
 def dist_prune(DELTA, prune=True):
     """ transform similarity matrix to distance matrix
@@ -16,7 +18,7 @@ def dist_prune(DELTA, prune=True):
     DELTA = np.abs(DELTA - w)
     np.fill_diagonal(DELTA, 0.)
     if prune:
-        cond = np.mean(DELTA)  # + np.std(DELTA)
+        cond = np.mean(DELTA)# + np.std(DELTA)
         for i in range(DELTA.shape[0]):
             for j in range(DELTA.shape[1]):
                 val = DELTA[i, j]
@@ -74,16 +76,32 @@ def gen_graph(DELTA, labels, figname="nucleus_graph.png"):
 
 
 def main():
+    ap = argparse.ArgumentParser(description="[INFO] build graph from nodes and edges")
+    ap.add_argument("-s", "--seed", required=True, help="path to seed file")
+    args = vars(ap.parse_args())
+
+
+    print(f"{bcolors.OKGREEN}[INFO] drawing graph ...{bcolors.ENDC}")
+    with open(args["seed"], "r") as fobj:
+        seeds = fobj.read().splitlines()
+    
+
+
+
     delta = np.loadtxt(
-        os.path.join("mdl", "delta_mat.dat"), delimiter=","
+        os.path.join("mdl", "edges.dat"), delimiter=","
         )
 
     DELTA = dist_prune(delta, prune=True)
-    with open(os.path.join("mdl", "delta_labels.dat"), "r") as f:
+
+    with open(os.path.join("mdl", "nodes.dat"), "r") as f:
         labels = f.read().split("\n")
     labels = labels[:-1]
-    outname = os.path.join("fig", "graph_nx_community.png")
+    
+    outname = os.path.join("fig", f"g_cluster-{'-'.join(seeds).lower()}-{date.today()}.png")
     gen_graph(DELTA, labels, figname=outname)
+
+    print(f"{bcolors.OKGREEN}[INFO] writing graph to: {bcolors.ENDC}{bcolors.WARNING}{outname}{bcolors.ENDC}")
 
 
 if __name__ == '__main__':

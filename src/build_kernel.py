@@ -1,6 +1,6 @@
 """
 v2 build_nucleus
-python src/build_kernel.py --model mdl/vectors_expr1.pcl --seed res/seedlist.txt --norm True
+python src/build_kernel.py --model mdl/vectors_expr3.pcl --seed res/seedlist.txt --norm True
 """
 import argparse
 import os
@@ -23,7 +23,7 @@ def nodes(seeds, vectors, k=3, m=10):#todo: option to write kernel_types and ker
     for source in seeds:
         if source in lexicon:
             deltas = list()
-            for i, target in enumerate(lexicon):
+            for (i, target) in enumerate(lexicon):
                 deltas.append(1 - spatial.distance.cosine(vectors[source], vectors[target]))
         else:
             continue
@@ -43,6 +43,7 @@ def nodes(seeds, vectors, k=3, m=10):#todo: option to write kernel_types and ker
         idxs = nmax_idx(deltas, n=m)
         tokens = [lexicon[idx] for idx in idxs]
         kernel_tokens[source] = tokens[::-1]
+    #print(kernel_tokens)
     tokenlist = sorted(list(set(flatten(list(kernel_tokens.values())))))
 
     return (typelist, tokenlist)
@@ -93,7 +94,7 @@ def main():
     with open(args["model"], "rb") as handle:
         vectors = pickle.load(handle)
     
-    (types, tokens) = nodes(seeds, vectors)
+    (types, tokens) = nodes(seeds, vectors, k=3, m=10)# write kernel dict to ndjson
     (X, delta, labels) = graph(vectors, types, tokens)
 
     # store results
